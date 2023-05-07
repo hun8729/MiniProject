@@ -13,9 +13,10 @@
 ## 📚 대략 기능설명
 * 도서 대출
 * 도서 반납
-* 반납 기간 연장
+* 대출 정보 수정(반납 기간)
 * 도서 검색
-* 현재 상태 확인
+* 반납 날이 지난 책 출력
+* 대출 중이 아닌 책들 중 랜덤으로 하나 추천!
 
 ## 📚 코드 및 기능
 ```C#
@@ -42,8 +43,8 @@ int listBook(Book *b[], int count);  //대여한 책 리스트 블러오기
 
 void searchName(Book *b[], int count);    //본인 이름 검색
 void searchBook(Book *b[], int count);    //책 이름 검색
-void searchOverdue(Book *b[], int count); //반납 날이 지난 책 검색
-void bestseller(Book *b[]);     //베스트셀러 책 출력
+void showOverdue(Book *b[], int count); //반납 날이 지난 책 조회
+void recommendBook(Book *b)// 랜덤으로 대출 중이 아닌 책을 추천 해주는 기능
 ```
 
 
@@ -57,8 +58,10 @@ void bestseller(Book *b[]);     //베스트셀러 책 출력
 박지훈 [hun8729 GITHUB LINK](https://github.com/hun8729)
  * Repo Owner
  * WIKI 관리
- * 
+ * CRUD 구현
+ * 코드 관리
 
 심성환 [hwan129 GITHUB LINK](https://github.com/hwan129)
  * Contributer
- * 
+ * 부가기능 구현
+ * 코드 관리
