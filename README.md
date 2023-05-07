@@ -51,7 +51,8 @@ void recommendBook(Book *b)// 랜덤으로 대출 중이 아닌 책을 추천 �
 
 ## 📚 개발환경 및 언어
 <img src="https://img.shields.io/badge/C-A8B9CC?style=flat&logo=C&logoColor=white"/>
- <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/>
+<img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/>
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/>
 
 ## 📚 팀소개 및 팀원이 맡은 역할
 팀원
