@@ -18,7 +18,16 @@
 * 현재 상태 확인
 
 ## 📚 코드 및 기능
-
+```C#
+typedef struct{
+    char name[20]; // 본인 이름
+    int studnetID; // 본인 학번
+    char bookName[20]; // 책 이름
+    char returningstate; //반납 유무 1이면 반납 0이면 아직 대여중
+    short int endMonth; // 반납 달
+    short int endDay; // 반납 날
+}Book; //구조체
+```
 
 
 
@@ -27,3 +36,12 @@
  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/>
 
 ## 📚 팀소개 및 팀원이 맡은 역할
+팀원
+박지훈 [hun8729 GITHUB LINK](https://github.com/hun8729)
+ * Repo Owner
+ * WIKI 관리
+ * 
+
+심성환 [hwan129 GITHUB LINK](https://github.com/hwan129)
+ * Contributer
+ * 
