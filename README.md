@@ -32,7 +32,7 @@ typedef struct{
 int createBook(Book *b); //대출 목록에 추가
 void readBook(Book b);   //책 하나의 대출 정보 출력
 int updateBook(Book *b); //대출 정보 수정
-int deleteBook(Book *b); //대출 목록에서 삭제
+int deleteBook(Book *b); //대출 목록에서 삭제(반납하기)
 
 int selectMenu();        //메뉴 선택하는 함수
 int selectNum(Book *b[], int count); //리스트 번호 선택
