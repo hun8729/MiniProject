@@ -1,7 +1,8 @@
 #include "book.h"
 
 void readBook(Book b){
-    printf("%s    %d   %s  %hd %hd\n",b.name,b.studnetID,b.bookName,b.endMonth,b.endDay);    
+    printf("  %s      %d          %s          %hd %hd\n",b.name,b.studnetID,b.bookName,b.endMonth,b.endDay);    
+}    
 }
 int createBook(Book *b){
     printf("이름 : ");
@@ -85,6 +86,7 @@ int selectMenu(){        //선택 메뉴
 
     return menu;
 }
+
 int listBook(Book *b[], int count){
     printf("\nNo    Name        StudentID       Book Name       Due date\n");
     printf("===============================================================\n");
@@ -97,7 +99,13 @@ int listBook(Book *b[], int count){
     }
     printf("\n");
 }
-
+int selectNum(Book *b[], int count){ //선택한 메뉴 취소 or 번호 선택
+    int num;
+    listBook(b, count);
+    printf("번호는 (취소 : 0)? ");
+    scanf("%d", &num);
+    return num;
+}
 void searchName(Book *b[], int count){
     int scnt=0;
     int sID;
@@ -107,7 +115,6 @@ void searchName(Book *b[], int count){
 
     printf("\nNo    Name        StudentID       Book Name       Due date\n");
     printf("===============================================================\n");
-
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
         continue;
@@ -119,11 +126,10 @@ void searchName(Book *b[], int count){
         }
     }
     if(scnt == 0){
-        printf("\n===검색된 데이터 없음===\n");
+    printf("\n===검색된 데이터 없음===\n");
     }
     printf("\n");
 }
-
 void searchBook(Book *b[], int count){
     int scnt=0;
     char search[20];
