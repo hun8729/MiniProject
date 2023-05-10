@@ -150,9 +150,9 @@ printf("===============================================================\n");
 
         printf("%2d ", i+1);
         if(b[i]->returningstate==1){
-            printf("%s    %d   %s  반납 완료 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
+            printf("   %s      %d        %s       반납 완료 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
         }else{
-            printf("%s    %d   %s  대여 중 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
+            printf("   %s      %d        %s        대여 중 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
             printf("반납 예정 일은 %hd월 %hd일입니다!\n",b[i]->endMonth,b[i]->endDay);
         }
         scnt++;
