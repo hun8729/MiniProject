@@ -1,7 +1,7 @@
 #include "book.h"
 
 void readBook(Book b){
-    printf("  %s      %d          %s          %hd %hd\n",b.name,b.studnetID,b.bookName,b.endMonth,b.endDay);    
+    printf("  %s      %d          %s         %hd %hd %hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
 }    
 int createBook(Book *b){
     printf("이름 : ");
@@ -12,7 +12,7 @@ int createBook(Book *b){
     getchar();
     scanf("%[^\n]s",b->bookName);
     printf("반납 날 ex)2001 01 01 : ");
-    scanf ("%hd %hd %hd",&b->endYear, &b->endMonth,&b->endDay);
+    scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     return 1;
 }
 int updateBook(Book *b){
@@ -24,7 +24,7 @@ int updateBook(Book *b){
     getchar();
     scanf("%[^\n]s",b->bookName);
     printf("반납 날 : ");
-    scanf ("%hd %hd",&b->endMonth,&b->endDay);
+    scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     printf("수정 성공!\n");
     return 1;
 }
@@ -140,7 +140,7 @@ void searchBook(Book *b[], int count){
     scanf("%s", search);
 
     printf("\nNo    Name        StudentID       Book Name       state \n");
-printf("===============================================================\n");
+    printf("===============================================================\n");
 
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
@@ -148,18 +148,19 @@ printf("===============================================================\n");
         }
         if(strstr(b[i]->bookName, search)){
 
-        printf("%2d ", i+1);
-        if(b[i]->returningstate==1){
-            printf("   %s      %d        %s       반납 완료 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
-        }else{
-            printf("   %s      %d        %s        대여 중 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
-            printf("반납 예정 일은 %hd년 %hd월 %hd일입니다!\n",b[i]->endYear, b[i]->endMonth,b[i]->endDay);
-        }
-        scnt++;
+            printf("%2d ", i+1);
+            if(b[i]->returningstate==1){
+                printf("   %s      %d        %s        대여 가능 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
+            }
+            else{
+                printf("   %s      %d        %s        대여 중 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
+                printf("반납 예정 일은 %hd년 %hd월 %hd일입니다!\n",b[i]->endYear, b[i]->endMonth,b[i]->endDay);
+            }
+            scnt++;
         }
     }
     if(scnt == 0){
-    printf("\n===검색된 데이터 없음===\n");
+        printf("\n===검색된 데이터 없음===\n");
     }
     printf("\n");
 }
@@ -169,11 +170,19 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스�
     int currentYear = localTime->tm_year + 1900;
     int currentMonth = localTime->tm_mon + 1;
     int currentDay = localTime->tm_mday;
+    int scnt=0;
 
     for(int i=0; i<count; i++){
-        if (currentYear < b[i]->endYear || (currentYear == b[i]->endYear && currentMonth < b[i]->endMonth) ||(currentYear == b[i]->endYear && currentMonth == b[i]->endMonth && currentDay < b[i]->endDay)) {
-            
+        if(b[i] == NULL){
+            continue;
         }
+        if (currentYear < b[i]->endYear || (currentYear == b[i]->endYear && currentMonth < b[i]->endMonth) ||(currentYear == b[i]->endYear && currentMonth == b[i]->endMonth && currentDay < b[i]->endDay)) {
+            readBook(b[i]);
+            scnt++;
+        }
+    }
+    if(scnt == 0){
+        printf("\n===검색된 데이터 없음===\n");
     }
 }
 
