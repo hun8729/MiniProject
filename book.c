@@ -11,9 +11,6 @@ int createBook(Book *b){
     printf("책 이름 : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-
-    //b->endYear
-
     printf("반납 날 ex)2001 01 01 : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     return 1;
@@ -87,6 +84,7 @@ int selectMenu(){        //선택 메뉴
     printf("8. 대출 미납자\n");
     printf("9. 오늘의 책\n");       //대출 중이 아닌 책들 중 하나 추천
     printf("0. 종료\n");
+    printf("원하는 메뉴는? :");
     scanf("%d", &menu);
 
     return menu;
