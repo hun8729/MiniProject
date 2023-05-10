@@ -164,6 +164,7 @@ void searchBook(Book *b[], int count){
     }
     printf("\n");
 }
+
 void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스트
     time_t currentTime = time(NULL);
     struct tm *localTime = localtime(&currentTime);
@@ -172,12 +173,13 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스�
     int currentDay = localTime->tm_mday;
     int scnt=0;
 
+    printf("현재 날짜 : %d %d %d", currentYear, currentMonth, currentDay);
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
             continue;
         }
         if (currentYear < b[i]->endYear || (currentYear == b[i]->endYear && currentMonth < b[i]->endMonth) ||(currentYear == b[i]->endYear && currentMonth == b[i]->endMonth && currentDay < b[i]->endDay)) {
-            readBook(b[i]);
+            readBook(*b[i]);
             scnt++;
         }
     }
