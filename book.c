@@ -1,36 +1,39 @@
 #include "book.h"
 
 void readBook(Book b){
-    printf("  %s      %d          %s         %hd %hd %hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
+    printf("%8s %13d %14s %10hd %hd %hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
 }    
 int createBook(Book *b){
-    printf("ì´ë¦„ : ");
+    printf("ÀÌ¸§ : ");
     scanf("%s",b->name);
-    printf("í•™ë²ˆ : ");
+    printf("ÇĞ¹ø : ");
     scanf("%d",&b->studnetID);
-    printf("ì±… ì´ë¦„ : ");
+    printf("Ã¥ ÀÌ¸§ : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-    printf("ë°˜ë‚© ë‚  ex)2001 01 01 : ");
+
+    //b->endYear
+
+    printf("¹İ³³ ³¯ ex)2001 01 01 : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     return 1;
 }
 int updateBook(Book *b){
-    printf("ì´ë¦„ : ");
+    printf("ÀÌ¸§ : ");
     scanf("%s",b->name);
-    printf("í•™ë²ˆ : ");
+    printf("ÇĞ¹ø : ");
     scanf("%d",&b->studnetID);
-    printf("ì±… ì´ë¦„ : ");
+    printf("Ã¥ ÀÌ¸§ : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-    printf("ë°˜ë‚© ë‚  : ");
+    printf("¹İ³³ ³¯ : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
-    printf("ìˆ˜ì • ì„±ê³µ!\n");
+    printf("¼öÁ¤ ¼º°ø!\n");
     return 1;
 }
 int deleteBook(Book *b){
     b->returningstate = 1;
-    printf("ë°˜ë‚© ì™„ë£Œ!\n");
+    printf("¹İ³³ ¿Ï·á!\n");
     return 1;
 }
 void saveBook(Book *b[], int count){
@@ -48,7 +51,7 @@ void saveBook(Book *b[], int count){
     }
     fclose(fp);
     fclose(s);
-    printf("=> ì €ì¥ë¨! \n");
+    printf("=> ÀúÀåµÊ! \n");
 }
 int loadBook(Book *b[], Library l[]){
     int i=0;
@@ -71,29 +74,29 @@ int loadBook(Book *b[], Library l[]){
     return i-1;
 }
 
-int selectMenu(){        //ì„ íƒ ë©”ë‰´
+int selectMenu(){        //¼±ÅÃ ¸Ş´º
     int menu;
-    printf("\n===ë„ì„œ ëŒ€ì¶œ/ë°˜ë‚© ë©”ë‰´\n");
-    printf("1. ëŒ€ì¶œ í˜„í™© ì¡°íšŒ\n");  //ì¡°íšŒ
-    printf("2. ë„ì„œ ëŒ€ì¶œ\n");       //ì¶”ê°€
-    printf("3. ëŒ€ì¶œ í˜„í™© ìˆ˜ì •\n");  //ìˆ˜ì •
-    printf("4. ë„ì„œ ë°˜ë‚©\n");       //ì‚­ì œ
-    printf("5. íŒŒì¼ ì €ì¥í•˜ê¸°\n");
-    printf("6. ë„ì„œ ì´ë¦„ ê²€ìƒ‰\n"); 
-    printf("7. ëŒ€ì¶œì ì´ë¦„ ê²€ìƒ‰\n");
-    printf("8. ëŒ€ì¶œ ë¯¸ë‚©ì\n");
-    printf("9. ì˜¤ëŠ˜ì˜ ì±…\n");       //ëŒ€ì¶œ ì¤‘ì´ ì•„ë‹Œ ì±…ë“¤ ì¤‘ í•˜ë‚˜ ì¶”ì²œ
-    printf("0. ì¢…ë£Œ >> ");
+    printf("\n===µµ¼­ ´ëÃâ/¹İ³³ ¸Ş´º\n");
+    printf("1. ´ëÃâ ÇöÈ² Á¶È¸\n");  //Á¶È¸
+    printf("2. µµ¼­ ´ëÃâ\n");       //Ãß°¡
+    printf("3. ´ëÃâ ÇöÈ² ¼öÁ¤\n");  //¼öÁ¤
+    printf("4. µµ¼­ ¹İ³³\n");       //»èÁ¦
+    printf("5. ÆÄÀÏ ÀúÀåÇÏ±â\n");
+    printf("6. µµ¼­ ÀÌ¸§ °Ë»ö\n"); 
+    printf("7. ´ëÃâÀÚ ÀÌ¸§ °Ë»ö\n");
+    printf("8. ´ëÃâ ¹Ì³³ÀÚ\n");
+    printf("9. ¿À´ÃÀÇ Ã¥\n");       //´ëÃâ ÁßÀÌ ¾Æ´Ñ Ã¥µé Áß ÇÏ³ª ÃßÃµ
+    printf("0. Á¾·á\n");
     scanf("%d", &menu);
 
     return menu;
 }
 
 int listBook(Book *b[], int count){
-    printf("\nNo    Name        StudentID       Book Name       Due date\n");
+    printf("\nNo    Name      StudentID      Book Name       Due date\n");
     printf("===============================================================\n");
     for(int i=0; i<count; i++){
-        if(b[i] == NULL){ // ì—†ìœ¼ë©´ ë£¨í”„ ì²˜ìŒìœ¼ë¡œ
+        if(b[i] == NULL){ // ¾øÀ¸¸é ·çÇÁ Ã³À½À¸·Î
             continue;
         }
         printf("%2d ", i+1);
@@ -101,10 +104,10 @@ int listBook(Book *b[], int count){
     }
     printf("\n");
 }
-int selectNum(Book *b[], int count){ //ì„ íƒí•œ ë©”ë‰´ ì·¨ì†Œ or ë²ˆí˜¸ ì„ íƒ
+int selectNum(Book *b[], int count){ //¼±ÅÃÇÑ ¸Ş´º Ãë¼Ò or ¹øÈ£ ¼±ÅÃ
     int num;
     listBook(b, count);
-    printf("ë²ˆí˜¸ëŠ” (ì·¨ì†Œ : 0)? ");
+    printf("¹øÈ£´Â (Ãë¼Ò : 0)? ");
     scanf("%d", &num);
     return num;
 }
@@ -112,10 +115,10 @@ void searchName(Book *b[], int count){
     int scnt=0;
     int sID;
 
-    printf("ê²€ìƒ‰í•  ë³¸ì¸ í•™ë²ˆì€? ");
+    printf("°Ë»öÇÒ º»ÀÎ ÇĞ¹øÀº? ");
     scanf("%d", &sID);
 
-    printf("\nNo    Name        StudentID       Book Name       Due date\n");
+    printf("\nNo    Name      StudentID      Book Name       Due date\n");
     printf("===============================================================\n");
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
@@ -128,7 +131,7 @@ void searchName(Book *b[], int count){
         }
     }
     if(scnt == 0){
-    printf("\n===ê²€ìƒ‰ëœ ë°ì´í„° ì—†ìŒ===\n");
+    printf("\n===°Ë»öµÈ µ¥ÀÌÅÍ ¾øÀ½===\n");
     }
     printf("\n");
 }
@@ -136,10 +139,10 @@ void searchBook(Book *b[], int count){
     int scnt=0;
     char search[20];
 
-    printf("ê²€ìƒ‰í•  ì±…ì˜ ì´ë¦„ì€? ");
+    printf("°Ë»öÇÒ Ã¥ÀÇ ÀÌ¸§Àº? ");
     scanf("%s", search);
 
-    printf("\nNo    Name        StudentID       Book Name       state \n");
+    printf("\nNo    Name      StudentID      Book Name       state \n");
     printf("===============================================================\n");
 
     for(int i=0; i<count; i++){
@@ -150,22 +153,22 @@ void searchBook(Book *b[], int count){
 
             printf("%2d ", i+1);
             if(b[i]->returningstate==1){
-                printf("   %s      %d        %s        ëŒ€ì—¬ ê°€ëŠ¥ \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
+                printf("   %s      %d        %s        ´ë¿© °¡´É \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
             }
             else{
-                printf("   %s      %d        %s        ëŒ€ì—¬ ì¤‘ \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
-                printf("ë°˜ë‚© ì˜ˆì • ì¼ì€ %hdë…„ %hdì›” %hdì¼ì…ë‹ˆë‹¤!\n",b[i]->endYear, b[i]->endMonth,b[i]->endDay);
+                printf("   %s      %d        %s        ´ë¿© Áß \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
+                printf("¹İ³³ ¿¹Á¤ ÀÏÀº %hd³â %hd¿ù %hdÀÏÀÔ´Ï´Ù!\n",b[i]->endYear, b[i]->endMonth,b[i]->endDay);
             }
             scnt++;
         }
     }
     if(scnt == 0){
-        printf("\n===ê²€ìƒ‰ëœ ë°ì´í„° ì—†ìŒ===\n");
+        printf("\n===°Ë»öµÈ µ¥ÀÌÅÍ ¾øÀ½===\n");
     }
     printf("\n");
 }
 
-void showOverdue(Book *b[], int count){     //ë°˜ë‚©ì¼ìê°€ ì§€ë‚œ ì±… ë¦¬ìŠ¤íŠ¸
+void showOverdue(Book *b[], int count){     //¹İ³³ÀÏÀÚ°¡ Áö³­ Ã¥ ¸®½ºÆ®
     time_t currentTime = time(NULL);
     struct tm *localTime = localtime(&currentTime);
     int currentYear = localTime->tm_year + 1900;
@@ -173,18 +176,20 @@ void showOverdue(Book *b[], int count){     //ë°˜ë‚©ì¼ìê°€ ì§€ë‚œ ì±… ë¦¬ìŠ¤í
     int currentDay = localTime->tm_mday;
     int scnt=0;
 
-    printf("í˜„ì¬ ë‚ ì§œ : %d %d %d", currentYear, currentMonth, currentDay);
+    printf("ÇöÀç ³¯Â¥ : %d %d %d\n", currentYear, currentMonth, currentDay);
+    printf("\nNo    Name      StudentID      Book Name       Due date\n");
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
             continue;
         }
-        if (currentYear < b[i]->endYear || (currentYear == b[i]->endYear && currentMonth < b[i]->endMonth) ||(currentYear == b[i]->endYear && currentMonth == b[i]->endMonth && currentDay < b[i]->endDay)) {
+        if (currentYear > b[i]->endYear || (currentYear == b[i]->endYear && currentMonth > b[i]->endMonth) ||(currentYear == b[i]->endYear && currentMonth == b[i]->endMonth && currentDay > b[i]->endDay)) {
+            printf("%2d ", i+1);
             readBook(*b[i]);
             scnt++;
         }
     }
     if(scnt == 0){
-        printf("\n===ê²€ìƒ‰ëœ ë°ì´í„° ì—†ìŒ===\n");
+        printf("\n===°Ë»öµÈ µ¥ÀÌÅÍ ¾øÀ½===\n");
     }
 }
 
