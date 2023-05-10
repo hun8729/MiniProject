@@ -11,6 +11,10 @@ typedef struct{
     short int endMonth; // 반납 달
     short int endDay; // 반납 날짜
 }Book; //구조체
+typedef struct{
+	char name[20];
+	int returningstate;
+}Library;
 
 int createBook(Book *b); //대출 목록에 추가
 void readBook(Book b);   //책 하나의 대출 정보 출력
@@ -18,7 +22,7 @@ int updateBook(Book *b); //대출 정보 수정
 int deleteBook(Book *b); //대출 목록에서 삭제(반납하기)
 
 void saveBook(Book *b[], int count); //데이터를 파일에 저장
-int loadBook(Book *b[]);             //파일의 데이터 불러오기
+int loadBook(Book *b[], Library l[]);             //파일의 데이터 불러오기
 
 int selectMenu();        //메뉴 선택하는 함수
 int selectNum(Book *b[], int count); //리스트 번호 선택

@@ -47,9 +47,15 @@ void saveBook(Book *b[], int count){
     fclose(s);
     printf("=> 저장됨! \n");
 }
-int loadBook(Book *b[]){
+int loadBook(Book *b[], Library l[]){
     int i=0;
     FILE *fp;
+    FILE *s;
+    fp = fopen("booklist.txt","rt");
+    for(int j=0; j<30; j++){
+	if(feof(s)) break;
+	fscanf(s,"%d %[^\n]s",&l[j].returningstate,l[j].name);
+    }
     fp = fopen("book.txt","rt");
     if(fp==NULL) return 0;
     for(; i<30; i++){
