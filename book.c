@@ -3,7 +3,6 @@
 void readBook(Book b){
     printf("  %s      %d          %s          %hd %hd\n",b.name,b.studnetID,b.bookName,b.endMonth,b.endDay);    
 }    
-}
 int createBook(Book *b){
     printf("이름 : ");
     scanf("%s",b->name);
