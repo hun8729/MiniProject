@@ -11,8 +11,8 @@ int createBook(Book *b){
     printf("책 이름 : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-    printf("반납 날 : ");
-    scanf ("%hd %hd",&b->endMonth,&b->endDay);
+    printf("반납 날 ex)2001 01 01 : ");
+    scanf ("%hd %hd %hd",&b->endYear, &b->endMonth,&b->endDay);
     return 1;
 }
 int updateBook(Book *b){
@@ -153,7 +153,7 @@ printf("===============================================================\n");
             printf("   %s      %d        %s       반납 완료 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
         }else{
             printf("   %s      %d        %s        대여 중 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
-            printf("반납 예정 일은 %hd월 %hd일입니다!\n",b[i]->endMonth,b[i]->endDay);
+            printf("반납 예정 일은 %hd년 %hd월 %hd일입니다!\n",b[i]->endYear, b[i]->endMonth,b[i]->endDay);
         }
         scnt++;
         }
@@ -163,8 +163,18 @@ printf("===============================================================\n");
     }
     printf("\n");
 }
-void showOverdue(Book *b[], int count){
+void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스트
+    time_t currentTime = time(NULL);
+    struct tm *localTime = localtime(&currentTime);
+    int currentYear = localTime->tm_year + 1900;
+    int currentMonth = localTime->tm_mon + 1;
+    int currentDay = localTime->tm_mday;
 
+    for(int i=0; i<count; i++){
+        if (currentYear < b[i]->endYear || (currentYear == b[i]->endYear && currentMonth < b[i]->endMonth) ||(currentYear == b[i]->endYear && currentMonth == b[i]->endMonth && currentDay < b[i]->endDay)) {
+            
+        }
+    }
 }
 
 void recommendBook(Book *b){
