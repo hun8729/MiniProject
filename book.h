@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 typedef struct{
@@ -8,6 +9,7 @@ typedef struct{
     int studnetID; // 본인 학번
     char bookName[20]; // 책 이름
     char returningstate; //반납 유무 1이면 반납 0이면 아직 대여중
+    short int endYear; //반납 년도
     short int endMonth; // 반납 달
     short int endDay; // 반납 날짜
 }Book; //구조체
