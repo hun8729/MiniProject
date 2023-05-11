@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define SIZE 30
-#include "book.h"
+#include "manager.h"
 
 
 int main(void){
@@ -70,6 +70,10 @@ int main(void){
       searchBook(b, index);
     }else if(menu == 7){
       searchName(b, index);
+    }
+
+    else if(menu == 8){
+      showOverdue(b, index);
     }
   }
   printf("종료됨!\n");
