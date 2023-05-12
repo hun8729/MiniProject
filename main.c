@@ -72,6 +72,9 @@ int main(void){
     else if(menu == 8){
       showOverdue(b, index);
     }
+    else if(menu == 9){
+      recommendBook(b, index);
+    }
   }
   printf("종료됨!\n");
   return 0;
