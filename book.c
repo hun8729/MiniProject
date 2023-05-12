@@ -4,33 +4,33 @@ void readBook(Book b){
     printf("%8s %13d %14s %10hd %hd %hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
 }    
 int createBook(Book *b){
-    printf("ÀÌ¸§ : ");
+    printf("¿¿ : ");
     scanf("%s",b->name);
-    printf("ÇÐ¹ø : ");
+    printf("¿¿ : ");
     scanf("%d",&b->studnetID);
-    printf("Ã¥ ÀÌ¸§ : ");
+    printf("¿ ¿¿ : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-    printf("¹Ý³³ ³¯ ex)2001 01 01 : ");
+    printf("¿¿ ¿ ex)2001 01 01 : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     return 1;
 }
 int updateBook(Book *b){
-    printf("ÀÌ¸§ : ");
+    printf("¿¿ : ");
     scanf("%s",b->name);
-    printf("ÇÐ¹ø : ");
+    printf("¿¿ : ");
     scanf("%d",&b->studnetID);
-    printf("Ã¥ ÀÌ¸§ : ");
+    printf("¿ ¿¿ : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-    printf("¹Ý³³ ³¯ : ");
+    printf("¿¿ ¿ : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
-    printf("¼öÁ¤ ¼º°ø!\n");
+    printf("¿¿ ¿¿!\n");
     return 1;
 }
 int deleteBook(Book *b){
     b->returningstate = 1;
-    printf("¹Ý³³ ¿Ï·á!\n");
+    printf("¿¿ ¿¿!\n");
     return 1;
 }
 void saveBook(Book *b[], int count){
@@ -43,12 +43,12 @@ void saveBook(Book *b[], int count){
           fprintf(s,"%d %s",b[i]->returningstate,b[i]->bookName);
           continue;
         }
-        fprintf(fp,"%s %d %hd %hd %s\n",b[i]->name,b[i]->studnetID,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
+        fprintf(fp,"%s %d %hd %hd %hd %s\n",b[i]->name,b[i]->studnetID,b[i]->endYear,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
         fprintf(s,"%d %s",b[i]->returningstate,b[i]->bookName);
     }
     fclose(fp);
     fclose(s);
-    printf("=> ÀúÀåµÊ! \n");
+    printf("=> ¿¿¿! \n");
 }
 int loadBook(Book *b[], Library l[]){
     int i=0;
@@ -64,7 +64,7 @@ int loadBook(Book *b[], Library l[]){
     for(; i<30; i++){
 	b[i] = (Book *)malloc(sizeof(Book));
         if(feof(fp)) break;
-        fscanf(fp, "%s %d %hd %hd",b[i]->name,&b[i]->studnetID,&b[i]->endMonth,&b[i]->endDay);
+        fscanf(fp, "%s %d %hd %hd %hd",b[i]->name,&b[i]->studnetID,&b[i]->endYear,&b[i]->endMonth,&b[i]->endDay);
 	fscanf(fp,"%[^\n]s",b[i]->bookName);
     }
     fclose(fp);
