@@ -9,18 +9,18 @@ int main(void){
   count = loadBook(b,l);
   index = count;
   if(count!=0){
-        printf("=> ë¡œë”© ì„±ê³µ!\n");
+        printf("=> ·Îµù ¼º°ø!\n");
        }else{
-         printf("=> íŒŒì¼ ì—†ìŒ\n");
+         printf("=> ÆÄÀÏ ¾øÀ½\n");
     }
   while(1){
     menu = selectMenu();
     if(menu == 0) break;
     if(menu == 1){
       if(count<=0){
-        printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+        printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
       }else{
-        listBook(b, index);
+        listBook(b, l, index);
       }
       }
     else if(menu == 2){
@@ -31,11 +31,11 @@ int main(void){
     else if(menu == 3){
       int modif=0;
       if(count<=0){
-                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
             }else{
-            modif = selectNum(b, index);
+            modif = selectNum(b, l, index);
         if(modif<0){
-          printf("ì·¨ì†Œ ë¨!\n");
+          printf("Ãë¼Ò µÊ!\n");
           continue;
         }
         updateBook(b[modif-1]);
@@ -45,14 +45,14 @@ int main(void){
       int delete;
             int again;
             if(count<=0){
-                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
             }else{
-            delete = selectNum(b, index);
+            delete = selectNum(b, l, index);
             if(delete<=0){
-                printf("ì·¨ì†Œë¨!\n");
+                printf("Ãë¼ÒµÊ!\n");
                 continue;
             }
-            printf("ì •ë§ë¡œ ë°˜ë‚©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ :1) ");
+            printf("Á¤¸»·Î ¹İ³³ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ :1) ");
             scanf("%d",&again);
             if(again==1){
                 if(deleteBook(b[delete-1])){
@@ -76,6 +76,6 @@ int main(void){
       recommendBook(b, index);
     }
   }
-  printf("ì¢…ë£Œë¨!\n");
+  printf("Á¾·áµÊ!\n");
   return 0;
 }
