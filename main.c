@@ -4,38 +4,39 @@
 
 int main(void){
   Book *b[SIZE];
-  Library l[SIZE];
+  Library *l[SIZE];
   int index=0, count=0, menu;
   count = loadBook(b,l);
   index = count;
   if(count!=0){
-        printf("=> ·Îµù ¼º°ø!\n");
+        printf("=> ë¡œë”© ì„±ê³µ!\n");
        }else{
-         printf("=> ÆÄÀÏ ¾øÀ½\n");
+         printf("=> íŒŒì¼ ì—†ìŒ\n");
     }
   while(1){
     menu = selectMenu();
     if(menu == 0) break;
     if(menu == 1){
       if(count<=0){
-        printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
+        printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
       }else{
         listBook(b, l, index);
       }
       }
     else if(menu == 2){
       b[index] = (Book *)malloc(sizeof(Book));
+      l[index] = (Library *)malloc(sizeof(Library));
       count += createBook(b[index]);
       index++;
     }
     else if(menu == 3){
       int modif=0;
       if(count<=0){
-                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
+                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
             }else{
             modif = selectNum(b, l, index);
         if(modif<0){
-          printf("Ãë¼Ò µÊ!\n");
+          printf("ì·¨ì†Œ ë¨!\n");
           continue;
         }
         updateBook(b[modif-1]);
@@ -45,14 +46,14 @@ int main(void){
       int delete;
             int again;
             if(count<=0){
-                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
+                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
             }else{
             delete = selectNum(b, l, index);
             if(delete<=0){
-                printf("Ãë¼ÒµÊ!\n");
+                printf("ì·¨ì†Œë¨!\n");
                 continue;
             }
-            printf("Á¤¸»·Î ¹İ³³ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ :1) ");
+            printf("ì •ë§ë¡œ ë°˜ë‚©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ :1) ");
             scanf("%d",&again);
             if(again==1){
                 if(deleteBook(b[delete-1])){
@@ -73,9 +74,9 @@ int main(void){
       showOverdue(b, index);
     }
     else if(menu == 9){
-      recommendBook(b, index);
+      recommendBook(l, index);
     }
   }
-  printf("Á¾·áµÊ!\n");
+  printf("ì¢…ë£Œë¨!\n");
   return 0;
 }
