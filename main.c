@@ -20,12 +20,11 @@ int main(void){
       if(count<=0){
         printf("데이터가 없습니다.\n");
       }else{
-        listBook(b, l, index);
+        listBook(b, index);
       }
       }
     else if(menu == 2){
       b[index] = (Book *)malloc(sizeof(Book));
-      l[index] = (Library *)malloc(sizeof(Library));
       count += createBook(b[index]);
       index++;
     }
@@ -34,7 +33,7 @@ int main(void){
       if(count<=0){
                 printf("데이터가 없습니다.\n");
             }else{
-            modif = selectNum(b, l, index);
+            modif = selectNum(b, index);
         if(modif<0){
           printf("취소 됨!\n");
           continue;
@@ -48,7 +47,7 @@ int main(void){
             if(count<=0){
                 printf("데이터가 없습니다.\n");
             }else{
-            delete = selectNum(b, l, index);
+            delete = selectNum(b, index);
             if(delete<=0){
                 printf("취소됨!\n");
                 continue;
