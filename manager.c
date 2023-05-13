@@ -67,7 +67,8 @@ void searchBook(Book *b[], int count){
     char search[20];
 
     printf("검색할 책의 이름은? ");
-    scanf("%s", search);
+    getchar();
+    scanf("%[^\n]s", search);
 
     printf("\nNo    Name      StudentID      Book Name       state \n");
     printf("===============================================================\n");
