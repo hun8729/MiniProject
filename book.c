@@ -52,13 +52,14 @@ void saveBook(Book *b[], int count){
     fclose(s);
     printf("=> 저장됨! \n");
 }
-int loadBook(Book *b[], Library l[]){
+int loadBook(Book *b[], Library *l[]){
     int i=0;
     FILE *fp;
     FILE *s;
     s = fopen("booklist.txt","rt");
     for(int j=0; j<30; j++){
 	if(feof(s)) break;
+	l[j] = (Library *)malloc(sizeof(Library));
 	fscanf(s,"%d %[^\n]s",&l[j].returningstate,l[j].name);
     }
     fp = fopen("book.txt","rt");
