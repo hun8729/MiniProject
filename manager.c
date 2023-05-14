@@ -19,7 +19,7 @@ int selectMenu(){        //선택 메뉴
     return menu;
 }
 
-int listBook(Book *b[], int count){
+void listBook(Book *b[], int count){
     printf("\nNo    Name      StudentID      Book Name       Due date\n");
     printf("===============================================================\n");
     for(int i=0; i<count; i++){
