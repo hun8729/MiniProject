@@ -42,7 +42,7 @@ void saveBook(Book *b[], int count){
     s = fopen("booklist.txt","wt");
     for(int i=0; i<count; i++){
         if(b[i]->returningstate == 1){
-          fprintf(s,"%d %s\",b[i]->returningstate,b[i]->bookName);
+          fprintf(s,"%d %s\n",b[i]->returningstate,b[i]->bookName);
           continue;
         }
         fprintf(fp,"%s %d %hd %hd %hd %s\n",b[i]->name,b[i]->studnetID,b[i]->endYear,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
@@ -60,7 +60,7 @@ int loadBook(Book *b[], Library *l[]){
     for(int j=0; j<30; j++){
 	if(feof(s)) break;
 	l[j] = (Library *)malloc(sizeof(Library));
-	fscanf(s,"%d %[^\n]s",&l[j].returningstate,l[j].name);
+	fscanf(s,"%d %[^\n]s",&l[j]->returningstate,l[j]->name);
     }
     fp = fopen("book.txt","rt");
     if(fp==NULL) return 0;
