@@ -121,6 +121,6 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스�
     }
 }
 
-void recommendBook(Library *l, int count){
+void recommendBook(Library *l[], int count){
 
 }
