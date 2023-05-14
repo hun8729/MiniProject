@@ -3,7 +3,7 @@
 
 int selectMenu();        //메뉴 선택하는 함수
 int selectNum(Book *b[], Library *l[], int count); //리스트 번호 선택
-int listBook(Book *b[], Library *l[], int count);  //대여한 책 리스트 블러오기
+void listBook(Book *b[], Library *l[], int count);  //대여한 책 리스트 블러오기
 
 void searchName(Book *b[], int count);    //본인 이름 검색
 void searchBook(Book *b[], int count);    //책 이름 검색
