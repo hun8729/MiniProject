@@ -106,6 +106,8 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스�
 
     printf("현재 날짜 : %d %d %d\n", currentYear, currentMonth, currentDay);
     printf("\nNo    Name      StudentID      Book Name       Due date\n");
+    printf("===============================================================\n");
+
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
             continue;
