@@ -4,35 +4,35 @@ void readBook(Book b){
     printf("%8s %13d %14s %10hd %hd %hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
 }    
 int createBook(Book *b){
-    printf("ì´ë¦„ : ");
+    printf("ÀÌ¸§ : ");
     scanf("%s",b->name);
-    printf("í•™ë²ˆ : ");
+    printf("ÇĞ¹ø : ");
     scanf("%d",&b->studnetID);
-    printf("ì±… ì´ë¦„ : ");
+    printf("Ã¥ ÀÌ¸§ : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-    printf("ë°˜ë‚© ë‚  ex)2001 01 01 : ");
+    printf("¹İ³³ ³¯ ex)2001 01 01 : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     b->returningstate=0;
 
     return 1;
 }
 int updateBook(Book *b){
-    printf("ì´ë¦„ : ");
+    printf("ÀÌ¸§ : ");
     scanf("%s",b->name);
-    printf("í•™ë²ˆ : ");
+    printf("ÇĞ¹ø : ");
     scanf("%d",&b->studnetID);
-    printf("ì±… ì´ë¦„ : ");
+    printf("Ã¥ ÀÌ¸§ : ");
     getchar();
     scanf("%[^\n]s",b->bookName);
-    printf("ë°˜ë‚© ë‚  : ");
+    printf("¹İ³³ ³¯ : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
-    printf("ìˆ˜ì • ì„±ê³µ!\n");
+    printf("¼öÁ¤ ¼º°ø!\n");
     return 1;
 }
 int deleteBook(Book *b){
     b->returningstate = 1;
-    printf("ë°˜ë‚© ì™„ë£Œ!\n");
+    printf("¹İ³³ ¿Ï·á!\n");
     return 1;
 }
 void saveBook(Book *b[], int count){
@@ -50,7 +50,7 @@ void saveBook(Book *b[], int count){
     }
     fclose(fp);
     fclose(s);
-    printf("=> ì €ì¥ë¨! \n");
+    printf("=> ÀúÀåµÊ! \n");
 }
 int loadBook(Book *b[], Library *l[]){
     int i=0;
