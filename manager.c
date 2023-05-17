@@ -19,23 +19,23 @@ int selectMenu(){        //선택 메뉴
     return menu;
 }
 
-void listBook(Book *b[], int count, Library *l[]){
+void listBook(Book *b[], int count){
     printf("\nNo    Name      StudentID      Book Name       Due date\n");
     printf("===============================================================\n");
     for(int i=0; i<count; i++){
         if(b[i] == NULL){ // 없으면 루프 처음으로
             continue;
         }
-        if(l[i]->returningstate == 0){
+        if(b[i]->returningstate == 0){
             printf("%2d ", i+1);
             readBook(*b[i]);
         }
     }
     printf("\n");
 }
-int selectNum(Book *b[], int count, Library *l[]){ //선택한 메뉴 취소 or 번호 선택
+int selectNum(Book *b[], int count){ //선택한 메뉴 취소 or 번호 선택
     int num;
-    listBook(b, count, l);
+    listBook(b, count);
     printf("번호는 (취소 : 0)? ");
     scanf("%d", &num);
     return num;
@@ -125,15 +125,17 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스트
     }
 }
 
-void recommendBook(Library *l[], int count){
+void recommendBook(Book *b[], int count){
     int randomNumber;
     srand(time(NULL));
-    do {
-        // 1에서 30 사이의 랜덤한 번호 선택
-        randomNumber = rand() % 30 + 1;
-        // 선택된 번호 출력
-        printf("랜덤한 번호: %d\n", randomNumber);
-    } while (l[randomNumber]->returningstate == 1); //반납된 책 중에서 추천
+    while (1){ //반납된 책 중에서 추천
+        printf("%d %d", b[randomNumber]->returningstate, randomNumber);
+        randomNumber = rand() % 30 + 1; // 1에서 30 사이의 랜덤한 번호 선택
+        if(b[randomNumber]->returningstate == 1){
+            printf("오늘은 '%s'를 읽어시는 것이 어떤가요?\n");
+            break;
+        }
+        
+    }
 
-    printf("오늘은 '%s'를 읽어시는 것이 어떤가요?\n");
 }
