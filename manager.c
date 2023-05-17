@@ -124,5 +124,13 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스�
 }
 
 void recommendBook(Library *l[], int count){
-
+    int randomNumber;
+    srand(time(NULL));
+    do {
+        // 1에서 30 사이의 랜덤한 번호 선택
+        randomNumber = rand() % 30 + 1;
+        // 선택된 번호 출력
+        printf("랜덤한 번호: %d\n", randomNumber);
+    } while (l[randomNumber]->returningstate == 1); //반납된 책 중에서 추천
+    
 }
