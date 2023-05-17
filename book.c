@@ -62,6 +62,7 @@ int loadBook(Book *b[], Library *l[]){
 	if(feof(s)) break;
 	l[j] = (Library *)malloc(sizeof(Library));
 	fscanf(s,"%d %[^\n]s",&l[j]->returningstate,l[j]->name);
+    fscanf(s,"%d %[^\n]s",&b[j]->returningstate,b[j]->name);
     }
     fp = fopen("book.txt","rt");
     if(fp==NULL) return 0;
