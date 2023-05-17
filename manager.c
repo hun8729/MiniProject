@@ -132,5 +132,6 @@ void recommendBook(Library *l[], int count){
         // 선택된 번호 출력
         printf("랜덤한 번호: %d\n", randomNumber);
     } while (l[randomNumber]->returningstate == 1); //반납된 책 중에서 추천
-    
+
+    printf("오늘은 '%s'를 읽어시는 것이 어떤가요?\n");
 }
