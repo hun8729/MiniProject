@@ -20,7 +20,7 @@ int main(void){
       if(count<=0){
         printf("데이터가 없습니다.\n");
       }else{
-        listBook(b, index, l);
+        listBook(b, index);
       }
       }
     else if(menu == 2){
@@ -33,7 +33,7 @@ int main(void){
       if(count<=0){
                 printf("데이터가 없습니다.\n");
             }else{
-            modif = selectNum(b, index, l);
+            modif = selectNum(b, index);
         if(modif<0){
           printf("취소 됨!\n");
           continue;
@@ -47,7 +47,7 @@ int main(void){
             if(count<=0){
                 printf("데이터가 없습니다.\n");
             }else{
-            delete = selectNum(b, index, l);
+            delete = selectNum(b, index);
             if(delete<=0){
                 printf("취소됨!\n");
                 continue;
@@ -73,7 +73,7 @@ int main(void){
       showOverdue(b, index);
     }
     else if(menu == 9){
-      recommendBook(l, index);
+      recommendBook(b, index);
     }
   }
   printf("종료됨!\n");

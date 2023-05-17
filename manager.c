@@ -26,7 +26,7 @@ void listBook(Book *b[], int count){
         if(b[i] == NULL){ // 없으면 루프 처음으로
             continue;
         }
-        if(b[i]->returningstate == 0){
+        if(b[i]->returningstate != 1){
             printf("%2d ", i+1);
             readBook(*b[i]);
         }
@@ -130,7 +130,7 @@ void recommendBook(Book *b[], int count){
     srand(time(NULL));
     while (1){ //반납된 책 중에서 추천
         printf("%d %d", b[randomNumber]->returningstate, randomNumber);
-        randomNumber = rand() % 30 + 1; // 1에서 30 사이의 랜덤한 번호 선택
+        randomNumber = rand() % 30; // 1에서 30 사이의 랜덤한 번호 선택
         if(b[randomNumber]->returningstate == 1){
             printf("오늘은 '%s'를 읽어시는 것이 어떤가요?\n");
             break;
