@@ -58,19 +58,19 @@ int loadBook(Book *b[], Library *l[]){
     FILE *s;
     s = fopen("booklist.txt","rt");
     for(int j=0; j<30; j++){
-	if(s==NULL) return 0;
-	if(feof(s)) break;
-	l[j] = (Library *)malloc(sizeof(Library));
-	fscanf(s,"%d %[^\n]s",&l[j]->returningstate,l[j]->name);
-    fscanf(s,"%d %[^\n]s",&b[j]->returningstate,b[j]->name);
+        if(s==NULL) return 0;
+        if(feof(s)) break;
+        l[j] = (Library *)malloc(sizeof(Library));
+        fscanf(s, "%d %[^\n]s",&l[j]->returningstate,l[j]->name);
     }
+    fclose(s);
     fp = fopen("book.txt","rt");
     if(fp==NULL) return 0;
     for(; i<30; i++){
-	b[i] = (Book *)malloc(sizeof(Book));
+	    b[i] = (Book *)malloc(sizeof(Book));
         if(feof(fp)) break;
         fscanf(fp, "%s %d %hd %hd %hd",b[i]->name,&b[i]->studnetID,&b[i]->endYear,&b[i]->endMonth,&b[i]->endDay);
-	fscanf(fp,"%[^\n]s",b[i]->bookName);
+	    fscanf(fp,"%[^\n]s",b[i]->bookName);
     }
     fclose(fp);
     return i-1;
