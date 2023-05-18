@@ -9,7 +9,7 @@ int selectMenu(){        //선택 메뉴
     printf("4. 도서 반납\n");       //삭제
     printf("5. 파일 저장하기\n");
     printf("6. 도서 이름 검색\n"); 
-    printf("7. 대출자 이름 검색\n");
+    printf("7. 학번 검색\n");
     printf("8. 대출 미납자\n");
     printf("9. 오늘의 책\n");       //대출 중이 아닌 책들 중 하나 추천
     printf("0. 종료\n");
@@ -129,8 +129,8 @@ void recommendBook(Book *b[], int count){
     int randomNumber;
     srand(time(NULL));
     while (1){ //반납된 책 중에서 추천
-        printf("%d %d", b[randomNumber]->returningstate, randomNumber);
         randomNumber = rand() % 30; // 1에서 30 사이의 랜덤한 번호 선택
+        printf("%d %d", b[randomNumber]->returningstate, randomNumber);
         if(b[randomNumber]->returningstate == 1){
             printf("오늘은 '%s'를 읽어시는 것이 어떤가요?\n");
             break;
