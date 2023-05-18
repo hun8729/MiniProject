@@ -46,7 +46,7 @@ void saveBook(Book *b[], int count){
           continue;
         }
         fprintf(fp,"%hd %s %d %hd %hd %hd %s\n",b[i]->returningstate,b[i]->name,b[i]->studnetID,b[i]->endYear,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
-        fprintf(s,"%d %s\n",b[i]->returningstate,b[i]->bookName);
+        fprintf(s,"%hd %s\n",b[i]->returningstate,b[i]->bookName);
     }
     fclose(fp);
     fclose(s);
@@ -61,7 +61,7 @@ int loadBook(Book *b[], Library *l[]){
         if(s==NULL) return 0;
         if(feof(s)) break;
         l[j] = (Library *)malloc(sizeof(Library));
-        fscanf(s, "%d %[^\n]s",&l[j]->returningstate,l[j]->name);
+        fscanf(s, "%hd %[^\n]s",&l[j]->returningstate,l[j]->name);
     }
     fclose(s);
     fp = fopen("book.txt","rt");
