@@ -73,7 +73,7 @@ int main(void){
       showOverdue(b, index);
     }
     else if(menu == 9){
-      recommendBook(b, index);
+      recommendBook(l, index);
     }
   }
   printf("Á¾·áµÊ!\n");
