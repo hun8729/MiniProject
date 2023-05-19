@@ -1,7 +1,7 @@
 #include "book.h"
 
 void readBook(Book b){
-    printf("%8s %13d %14s %10hd %hd %hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
+    printf("%8s %13d %14s %10hd %2hd %2hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
 }    
 int createBook(Book *b){
     printf("이름 : ");
