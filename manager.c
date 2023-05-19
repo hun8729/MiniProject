@@ -126,16 +126,18 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스트
 }
 
 void recommendBook(Library *l[], int count){
-    int randomNumber;
+    int randomNumber, num;
     srand(time(NULL));
+    for(int i = 0; l[i]->returningstate; i++){
+        num = i;
+    }
+    printf("%d\n", num/2+1);
     while (1){ //반납된 책 중에서 추천
-        randomNumber = rand() % 30; // 1에서 count 사이의 랜덤한 번호 선택
-        printf("%d %d\n", l[1]->returningstate, randomNumber);
+        randomNumber = rand() % (num/2+1); // 1에서 count 사이의 랜덤한 번호 선택
+    
         if(l[randomNumber]->returningstate == 1){
             printf("오늘은 '%s'를(을) 읽어보는 것이 어떤가요?\n", l[randomNumber]->name);
             break;
-        }
-        
+        }   
     }
-
 }
