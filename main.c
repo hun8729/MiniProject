@@ -25,7 +25,7 @@ int main(void){
       }
     else if(menu == 2){
       b[index] = (Book *)malloc(sizeof(Book));
-      count += createBook(b[index]);
+      count += createBook(b[index], l);
       index++;
     }
     else if(menu == 3){
