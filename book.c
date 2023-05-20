@@ -3,7 +3,7 @@
 void readBook(Book b){
     printf("%8s %13d %14s %10hd %2hd %2hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
 }    
-int createBook(Book *b){
+int createBook(Book *b, Library *l[]){
     printf("이름 : ");
     scanf("%s",b->name);
     printf("학번 : ");
@@ -14,6 +14,12 @@ int createBook(Book *b){
     printf("반납 날 ex)2001 01 01 : ");
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     b->returningstate=0;
+    for(int i = 0; l[i]->name; i++){
+        if(l[i]->returningstate == 1){
+            free(l[i]);
+            l[i] == NULL;
+        }
+    }
 
     return 1;
 }
