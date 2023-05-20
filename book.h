@@ -17,7 +17,7 @@ typedef struct{
 	short int returningstate;
 }Library;
 
-int createBook(Book *b); //대출 목록에 추가
+int createBook(Book *b, Library *l[]); //대출 목록에 추가
 void readBook(Book b);   //책 하나의 대출 정보 출력
 int updateBook(Book *b); //대출 정보 수정
 int deleteBook(Book *b); //대출 목록에서 삭제(반납하기)
