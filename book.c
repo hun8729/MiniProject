@@ -15,7 +15,7 @@ int createBook(Book *b, Library *l[]){
     scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
     b->returningstate=0;
     for(int i = 0; l[i]->name; i++){
-        if(l[i]->returningstate == 1){
+        if(l[i]->name == b[i].bookName){
             free(l[i]);
             l[i] == NULL;
         }
