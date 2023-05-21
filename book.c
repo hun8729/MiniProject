@@ -2,58 +2,8 @@
 
 void readBook(Book b){
     printf("%7s%13d%14s%14hd %hd %hd\n", b.name, b.studnetID, b.bookName, b.endYear, b.endMonth, b.endDay);    
-}    
-int createBook(Book *b, Library *l[]){
-    printf("ÀÌ¸§ : ");
-    scanf("%s",b->name);
-    printf("ÇĞ¹ø : ");
-    scanf("%d",&b->studnetID);
-    printf("Ã¥ ÀÌ¸§ : ");
-    getchar();
-    scanf("%[^\n]s",b->bookName);
-    
-    while(1){
-      printf("¹İ³³ÀÏ ex)2001 01 01 : ");
-      scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
-      if(timeCal(b) == 0){
-        break;
-      }
-    }
-    
-    b->returningstate=0;
-    for(int i = 0; l[i]->name; i++){  //¹İ³³¸®½ºÆ®¿¡ ºô¸®·ÁÇÏ´Â Ã¥ÀÌ ÀÖ´Ù¸é ¹İ³³¸®½ºÆ®¿¡¼­ Áö¿ì±â
-        if(l[i]->name == b->bookName){
-            free(l[i]);
-            l[i] == NULL;
-        }
-    }
-    return 1;
 }
-int updateBook(Book *b){
-    printf("ÀÌ¸§ : ");
-    scanf("%s",b->name);
-    printf("ÇĞ¹ø : ");
-    scanf("%d",&b->studnetID);
-    printf("Ã¥ ÀÌ¸§ : ");
-    getchar();
-    scanf("%[^\n]s",b->bookName);
-    while(1){
-      printf("¹İ³³ÀÏ ex)2001 01 01 : ");
-      scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
-      if(timeCal(b) == 0){
-        break;
-      }
-    }
-    printf("¼öÁ¤ ¼º°ø!\n");
-    return 1;
-}
-int deleteBook(Book *b, Library *l){
-    b->returningstate = 1;
-    strcpy(l->name,b->bookName);
-    printf("¹İ³³ ¿Ï·á!\n");
-    return 1;
-}
-int timeCal(Book *b){ //ÇöÀç ³¯Â¥¿Í ÀÔ·ÂµÈ ³¯Â¥ Â÷ÀÌ °è»ê
+int timeCal(Book *b){ //í˜„ì¬ ë‚ ì§œì™€ ì…ë ¥ëœ ë‚ ì§œ ì°¨ì´ ê³„ì‚°
   time_t currentTime = time(NULL);
     struct tm *currentDate = localtime(&currentTime);
 
@@ -70,18 +20,69 @@ int timeCal(Book *b){ //ÇöÀç ³¯Â¥¿Í ÀÔ·ÂµÈ ³¯Â¥ Â÷ÀÌ °è»ê
     double daysDiff = secondsDiff / (60 * 60 * 24);
 
     if (daysDiff >= 30 || daysDiff < 0 || b->endDay < 0 || b->endDay > 32) {
-      printf("¹İ³³ÀÏÀ» Àß¸ø ÀÔ·ÂÇÏ¿´½À´Ï´Ù.(ÇöÀç ³¯Â¥º¸´Ù ¸¹À¸¸ç 30ÀÏ ÀÌ³»)\n");
+      printf("ë°˜ë‚©ì¼ì„ ì˜ëª» ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤.(í˜„ì¬ ë‚ ì§œë³´ë‹¤ ë§ìœ¼ë©° 30ì¼ ì´ë‚´)\n");
       return 1;
     }else {
       return 0;
     }
 }
+int createBook(Book *b, Library *l[]){
+    printf("ì´ë¦„ : ");
+    scanf("%s",b->name);
+    printf("í•™ë²ˆ : ");
+    scanf("%d",&b->studnetID);
+    printf("ì±… ì´ë¦„ : ");
+    getchar();
+    scanf("%[^\n]s",b->bookName);
+    
+    while(1){
+      printf("ë°˜ë‚©ì¼ ex)2001 01 01 : ");
+      scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
+      if(timeCal(b) == 0){
+        break;
+      }
+    }
+    
+    b->returningstate=0;
+    for(int i = 0; l[i]->name; i++){  //ë°˜ë‚©ë¦¬ìŠ¤íŠ¸ì— ë¹Œë¦¬ë ¤í•˜ëŠ” ì±…ì´ ìˆë‹¤ë©´ ë°˜ë‚©ë¦¬ìŠ¤íŠ¸ì—ì„œ ì§€ìš°ê¸°
+        if(l[i]->name == b->bookName){
+            free(l[i]);
+            l[i] == NULL;
+        }
+    }
+    return 1;
+}
+int updateBook(Book *b){
+    printf("ì´ë¦„ : ");
+    scanf("%s",b->name);
+    printf("í•™ë²ˆ : ");
+    scanf("%d",&b->studnetID);
+    printf("ì±… ì´ë¦„ : ");
+    getchar();
+    scanf("%[^\n]s",b->bookName);
+    while(1){
+      printf("ë°˜ë‚©ì¼ ex)2001 01 01 : ");
+      scanf ("%hd %hd %hd",&b->endYear, &b->endMonth, &b->endDay);
+      if(timeCal(b) == 0){
+        break;
+      }
+    }
+    printf("ìˆ˜ì • ì„±ê³µ!\n");
+    return 1;
+}
+int deleteBook(Book *b, Library *l){
+    b->returningstate = 1;
+    strcpy(l->name,b->bookName);
+    printf("ë°˜ë‚© ì™„ë£Œ!\n");
+    return 1;
+}
+
 void saveBook(Book *b[],Library *l[], int count, int booknum){
     FILE *fp;
     FILE *s;
     fp = fopen("book.txt","wt");
     s = fopen("booklist.txt","wt");
-    for(int i=0; i<count; i++){     //´ë¿©¸®½ºÆ®(book.txt)¿¡ ÀúÀå
+    for(int i=0; i<count; i++){     //ëŒ€ì—¬ë¦¬ìŠ¤íŠ¸(book.txt)ì— ì €ì¥
       fprintf(fp,"%hd %s %d %hd %hd %hd%s\n",b[i]->returningstate,b[i]->name,b[i]->studnetID,b[i]->endYear,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
     }
   for(int i=0; i<booknum; i++){
@@ -90,13 +91,13 @@ void saveBook(Book *b[],Library *l[], int count, int booknum){
     for(int j=0; j<=count; j++){
       if(b[j]==NULL) break;
     }
-    fprintf(s,"%s\n",l[i]->name); //¹İ³³¸®½ºÆ®(booklist.txt)¿¡ ÀúÀå
+    fprintf(s,"%s\n",l[i]->name); //ë°˜ë‚©ë¦¬ìŠ¤íŠ¸(booklist.txt)ì— ì €ì¥
   }
     fclose(fp);
     fclose(s);
-    printf("=> ÀúÀåµÊ! \n");
+    printf("=> ì €ì¥ë¨! \n");
 }
-int loadBook(Book *b[]){    //´ë¿©¸®½ºÆ® ºÒ·¯¿À±â
+int loadBook(Book *b[]){    //ëŒ€ì—¬ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°
     int i=0;
     FILE *fp;
     fp = fopen("book.txt","rt");
@@ -110,7 +111,7 @@ int loadBook(Book *b[]){    //´ë¿©¸®½ºÆ® ºÒ·¯¿À±â
     fclose(fp);
     return i-1;
 }
-int loadBookList(Library *l[]){ //¹İ³³¸®½ºÆ® ºÒ·¯¿À±â
+int loadBookList(Library *l[]){ //ë°˜ë‚©ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°
   int i=0;
   FILE *s;
   s = fopen("booklist.txt","rt");
