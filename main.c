@@ -28,6 +28,19 @@ int main(void){
     else if(menu == 2){
       b[index] = (Book *)malloc(sizeof(Book));
       count += createBook(b[index], l);
+      for(int i = 0; i < booknum; i++){
+          if(strcmp(b[index]->bookName, l[i]->name) == 0){
+            if(l[i]->name){
+              for(int j = i; j < booknum; j++){
+                if(l[j+1]){
+                strcpy(l[j]->name, l[j+1]->name);
+                }
+              }
+              booknum--;
+              break;
+            }
+          }
+        }
       index++;
     }
     else if(menu == 3){
