@@ -86,7 +86,6 @@ void saveBook(Book *b[],Library *l[], int count, int booknum){
       fprintf(fp,"%hd %s %d %hd %hd %hd%s\n",b[i]->returningstate,b[i]->name,b[i]->studnetID,b[i]->endYear,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
     }
   for(int i=0; i<booknum; i++){
-    int re=0;
     if(l[i]==NULL) break;
     for(int j=0; j<=count; j++){
       if(b[j]==NULL) break;
