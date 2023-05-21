@@ -83,7 +83,7 @@ void saveBook(Book *b[],Library *l[], int count, int booknum){
     fp = fopen("book.txt","wt");
     s = fopen("booklist.txt","wt");
     for(int i=0; i<count; i++){     //대여리스트(book.txt)에 저장
-      if(b[i]->->returningstate==1) continue;
+      if(b[i]->returningstate==1) continue;
       fprintf(fp,"%hd %s %d %hd %hd %hd%s\n",b[i]->returningstate,b[i]->name,b[i]->studnetID,b[i]->endYear,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
     }
   for(int i=0; i<booknum; i++){
