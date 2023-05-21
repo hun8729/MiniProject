@@ -1,26 +1,27 @@
 #define SIZE 30
+#define BOOKCOUNT 100
 #include "manager.h"
 
 
 int main(void){
   Book *b[SIZE];
-  Library *l[100];
+  Library *l[BOOKCOUNT];
   int booknum=0;
   int index=0, count=0, menu;
-  count = loadBook(b);        //´ë¿©¸®½ºÆ®ÀÇ µ¥ÀÌÅÍ °³¼ö
-  booknum = loadBookList(l);  //¹İ³³¸®½ºÆ®ÀÇ µ¥ÀÌÅÍ °³¼ö
+  count = loadBook(b);        //ëŒ€ì—¬ë¦¬ìŠ¤íŠ¸ì˜ ë°ì´í„° ê°œìˆ˜
+  booknum = loadBookList(l);  //ë°˜ë‚©ë¦¬ìŠ¤íŠ¸ì˜ ë°ì´í„° ê°œìˆ˜
   index = count;
   if(count!=0){
-        printf("=> ·Îµù ¼º°ø!\n");
+        printf("=> ë¡œë”© ì„±ê³µ!\n");
        }else{
-         printf("=> ÆÄÀÏ ¾øÀ½\n");
+         printf("=> íŒŒì¼ ì—†ìŒ\n");
     }
   while(1){
     menu = selectMenu();
     if(menu == 0) break;
     if(menu == 1){
       if(count<=0){
-        printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
+        printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
       }else{
         listBook(b, index);
       }
@@ -33,11 +34,11 @@ int main(void){
     else if(menu == 3){
       int modif=0;
       if(count<=0){
-                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
+                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
             }else{
             modif = selectNum(b, index);
         if(modif==0){
-          printf("Ãë¼Ò µÊ!\n");
+          printf("ì·¨ì†Œ ë¨!\n");
           continue;
         }
         updateBook(b[modif-1]);
@@ -60,14 +61,14 @@ int main(void){
       int delete;
             int again;
             if(count<=0){
-                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
+                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
             }else{
             delete = selectNum(b, index);
             if(delete<=0){
-                printf("Ãë¼ÒµÊ!\n");
+                printf("ì·¨ì†Œë¨!\n");
                 continue;
             }
-            printf("Á¤¸»·Î ¹İ³³ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ :1) ");
+            printf("ì •ë§ë¡œ ë°˜ë‚©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ :1) ");
             scanf("%d",&again);
             if(again==1){
                l[booknum] = (Library *)malloc(sizeof(Library));
@@ -93,6 +94,6 @@ int main(void){
       recommendBook(l, booknum);
     }
   }
-  printf("Á¾·áµÊ!\n");
+  printf("ì¢…ë£Œë¨!\n");
   return 0;
 }
