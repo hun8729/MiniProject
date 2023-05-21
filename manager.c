@@ -65,7 +65,7 @@ void searchName(Book *b[], int count){
     }
     printf("\n");
 }
-void searchBook(Book *b[], int count){      //책 이름으로  
+void searchBook(Book *b[],Library *l[], int count, int booknum){      //책 이름으로  
     int scnt=0;
     char search[20];
 
@@ -91,6 +91,20 @@ void searchBook(Book *b[], int count){      //책 이름으로
             }
             scnt++;
         }
+    }
+    for(int j=0; j<booknum; j++){
+      int co=0;
+      if(strstr(l[j]->name, search)){
+      for(int k=0; k<count; k++){
+        if(strstr(l[j]->name,b[k]->bookName)&&b[k]->returningstate==0){
+          co++;
+        }
+      }
+      if(co==0){
+        printf("   %s   대여 가능 \n",l[j]->name);
+        scnt++;
+      }
+    }
     }
     if(scnt == 0){
         printf("\n===검색된 데이터 없음===\n");
