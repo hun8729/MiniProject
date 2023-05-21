@@ -93,9 +93,9 @@ int main(void){
         }
         }
     else if(menu == 5){
-      saveBook(b,l ,index,booknum);
+      saveBook(b, l, index, booknum);
     }else if(menu == 6){
-      searchBook(b, index);
+      searchBook(b, l, index, booknum);
     }else if(menu == 7){
       searchName(b, index);
     }
