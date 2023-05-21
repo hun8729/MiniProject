@@ -101,7 +101,7 @@ void searchBook(Book *b[],Library *l[], int count, int booknum){      //책 이�
         }
       }
       if(co==0){
-        printf("   %s   대여 가능 \n",l[j]->name);
+        printf("   %s는 현재 도서관에 있으며 대여가 가능합니다 \n",l[j]->name);
         scnt++;
       }
     }
