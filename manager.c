@@ -9,7 +9,7 @@ int selectMenu(){        //선택 메뉴
     printf("4. 도서 반납\n");       //삭제
     printf("5. 파일 저장하기\n");
     printf("6. 도서 이름 검색\n"); 
-    printf("7. 학번 검색\n");
+    printf("7. 대출자 이름 검색\n");
     printf("8. 대출 미납자\n");
     printf("9. 오늘의 책\n");       //대출 중이 아닌 책들 중 하나 추천
     printf("0. 종료\n");
@@ -23,13 +23,11 @@ void listBook(Book *b[], int count){
     printf("\nNo    Name      StudentID      Book Name       Due date\n");
     printf("===============================================================\n");
     for(int i=0; i<count; i++){
-        if(b[i] == NULL){ // 없으면 루프 처음으로
+        if(b[i] == NULL||b[i]->returningstate==1){ // 없으면 루프 처음으로
             continue;
         }
-        if(b[i]->returningstate != 1){
-            printf("%2d ", i+1);
-            readBook(*b[i]);
-        }
+        printf("%2d ", i+1);
+        readBook(*b[i]);
     }
     printf("\n");
 }
@@ -52,6 +50,9 @@ void searchName(Book *b[], int count){
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
         continue;
+        }
+        if(b[i]->returningstate == 1){
+          continue;
         }
         if(b[i]->studnetID == sID){
         printf("%2d ", i+1);
@@ -79,13 +80,12 @@ void searchBook(Book *b[], int count){
         if(b[i] == NULL){
         continue;
         }
+        if(b[i]->returningstate == 1){
+          continue;
+        }
         if(strstr(b[i]->bookName, search)){
-
             printf("%2d ", i+1);
-            if(b[i]->returningstate==1){
-                printf("   %s      %d        %s        대여 가능 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
-            }
-            else{
+            if(b[i]->returningstate==0){
                 printf("   %s      %d        %s        대여 중 \n",b[i]->name,b[i]->studnetID,b[i]->bookName);
                 printf("반납 예정 일은 %hd년 %hd월 %hd일입니다!\n",b[i]->endYear, b[i]->endMonth,b[i]->endDay);
             }
@@ -106,9 +106,9 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스트
     int currentDay = localTime->tm_mday;
     int scnt=0;
 
-    printf("현재 날짜 : %d %d %d\n", currentYear, currentMonth, currentDay);
+    printf("\n현재 날짜 : %d %d %d\n", currentYear, currentMonth, currentDay);
     printf("\nNo    Name      StudentID      Book Name       Due date\n");
-    printf("===============================================================\n");
+      printf("===============================================================\n");
 
     for(int i=0; i<count; i++){
         if(b[i] == NULL){
@@ -125,18 +125,17 @@ void showOverdue(Book *b[], int count){     //반납일자가 지난 책 리스트
     }
 }
 
-void recommendBook(Library *l[], int count){
-    int randomNumber, num;
+void recommendBook(Library *l[], int booknum){
+    int randomNumber;
     srand(time(NULL));
-    for(int i = 0; l[i]->returningstate; i++){
-        num = i;
-    }
-    printf("%d\n", num/2+1);
     while (1){ //반납된 책 중에서 추천
-        randomNumber = rand() % (num/2+1); // 1에서 count 사이의 랜덤한 번호 선택
-    
-        if(l[randomNumber]->returningstate == 1){
-            printf("오늘은 '%s'를(을) 읽어보는 것이 어떤가요?\n", l[randomNumber]->name);
+        if(booknum == 0){
+            printf("책이 없습니다.\n");
+            break;
+        }
+        randomNumber = rand() % booknum; // 1에서 count 사이의 랜덤한 번호 선택
+        if(l[randomNumber]){
+            printf("오늘은 '%s'을(를) 읽어보는 것이 어떤가요?\n", l[randomNumber]->name);
             break;
         }   
     }
