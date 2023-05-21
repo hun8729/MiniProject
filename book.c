@@ -36,23 +36,32 @@ int updateBook(Book *b){
     printf("수정 성공!\n");
     return 1;
 }
-int deleteBook(Book *b){
+int deleteBook(Book *b, Library *l){
     b->returningstate = 1;
+    strcpy(l->name,b->bookName);
     printf("반납 완료!\n");
     return 1;
 }
-void saveBook(Book *b[], int count){
+void saveBook(Book *b[],Library *l[], int count, int booknum){
     FILE *fp;
     FILE *s;
     fp = fopen("book.txt","wt");
     s = fopen("booklist.txt","wt");
     for(int i=0; i<count; i++){
         if(b[i]->returningstate == 1){
-          fprintf(s,"%d %s\n",b[i]->returningstate,b[i]->bookName);
           continue;
         }
         fprintf(fp,"%hd %s %d %hd %hd %hd %s\n",b[i]->returningstate,b[i]->name,b[i]->studnetID,b[i]->endYear,b[i]->endMonth,b[i]->endDay,b[i]->bookName);
-        fprintf(s,"%hd %s\n",b[i]->returningstate,b[i]->bookName);
+    }
+    for(int i=0; i<booknum; i++){
+	if(b[j]==NULL) break;
+        if(b[j]->returningstate==1) continue;
+        if(strcmp(l[i]->name, b[j]->bookName)==0){
+        re=1;
+        break;
+	}
+	if(re==1) continue;
+	fprintf(s,"%s\n",l[i]->name);
     }
     fclose(fp);
     fclose(s);
@@ -61,15 +70,6 @@ void saveBook(Book *b[], int count){
 int loadBook(Book *b[], Library *l[]){
     int i=0;
     FILE *fp;
-    FILE *s;
-    s = fopen("booklist.txt","rt");
-    for(int j=0; j<30; j++){
-        if(s==NULL) return 0;
-        if(feof(s)) break;
-        l[j] = (Library *)malloc(sizeof(Library));
-        fscanf(s, "%hd %[^\n]s",&l[j]->returningstate,l[j]->name);
-    }
-    fclose(s);
     fp = fopen("book.txt","rt");
     if(fp==NULL) return 0;
     for(; i<30; i++){
@@ -80,5 +80,18 @@ int loadBook(Book *b[], Library *l[]){
     }
     fclose(fp);
     return i-1;
+}
+int loadBookList(Library *[]){
+  int i=0;
+  FILE *s;
+  s = fopen("booklist.txt","rt");
+  if(s==NULL) return 0;
+  for(; i<100; i++){
+    if(feof(s)) break;
+    l[i] = (Library *)malloc(sizeof(Library));
+    fscanf(s, "%[^\n]s",l[i]->name);
+  }
+  fclose(s);
+  return i-1;
 }
 

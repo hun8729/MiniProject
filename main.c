@@ -4,9 +4,11 @@
 
 int main(void){
   Book *b[SIZE];
-  Library *l[SIZE];
+  Library *l[100];
+  int booknum = 0;
   int index=0, count=0, menu;
-  count = loadBook(b,l);
+  count = loadBook(b);
+  booknum = loadBookList(l);
   index = count;
   if(count!=0){
         printf("=> �ε� ����!\n");
@@ -55,7 +57,9 @@ int main(void){
             printf("������ �ݳ��Ͻðڽ��ϱ�?(���� :1) ");
             scanf("%d",&again);
             if(again==1){
-                if(deleteBook(b[delete-1])){
+		l[booknum] = (Library *)malloc(sizeof(Library));
+                if(deleteBook(b[delete-1],l[booknum])){
+		    booknum++;
                     count--;
                 }
             }         
