@@ -5,22 +5,22 @@
 int main(void){
   Book *b[SIZE];
   Library *l[100];
-  int booknum = 0;
+  int booknum=0;
   int index=0, count=0, menu;
-  count = loadBook(b);
-  booknum = loadBookList(l);
+  count = loadBook(b);        //´ë¿©¸®½ºÆ®ÀÇ µ¥ÀÌÅÍ °³¼ö
+  booknum = loadBookList(l);  //¹İ³³¸®½ºÆ®ÀÇ µ¥ÀÌÅÍ °³¼ö
   index = count;
   if(count!=0){
-        printf("=> ë¡œë”© ì„±ê³µ!\n");
+        printf("=> ·Îµù ¼º°ø!\n");
        }else{
-         printf("=> íŒŒì¼ ì—†ìŒ\n");
+         printf("=> ÆÄÀÏ ¾øÀ½\n");
     }
   while(1){
     menu = selectMenu();
     if(menu == 0) break;
     if(menu == 1){
       if(count<=0){
-        printf("ë°ì´í„°ê°€ ì—†ã……ë¸Œë‹ˆë‹¤.\n");
+        printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
       }else{
         listBook(b, index);
       }
@@ -33,40 +33,53 @@ int main(void){
     else if(menu == 3){
       int modif=0;
       if(count<=0){
-                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
             }else{
             modif = selectNum(b, index);
-        if(modif<0){
-          printf("ì·¨ì†Œ ë¨!\n");
+        if(modif==0){
+          printf("Ãë¼Ò µÊ!\n");
           continue;
         }
         updateBook(b[modif-1]);
-    }
+        for(int i = 0; i < booknum; i++){
+          if(strcmp(b[modif-1]->bookName, l[i]->name) == 0){
+            if(l[i]->name){
+              for(int j = i; j < booknum; j++){
+                if(l[j+1]){
+                strcpy(l[j]->name, l[j+1]->name);
+                }
+              }
+              booknum--;
+              break;
+            }
+          }
+        }
+      }
     }
     else if(menu == 4){
       int delete;
             int again;
             if(count<=0){
-                printf("ë°ì´í„°ê°€ ì—†ã……ë¸Œë‹ˆë‹¤.\n");
+                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
             }else{
             delete = selectNum(b, index);
             if(delete<=0){
-                printf("ì·¨ì†Œë¨!\n");
+                printf("Ãë¼ÒµÊ!\n");
                 continue;
             }
-            printf("ì •ë§ë¡œ ë°˜ë‚©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ :1) ");
+            printf("Á¤¸»·Î ¹İ³³ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ :1) ");
             scanf("%d",&again);
             if(again==1){
-		l[booknum] = (Library *)malloc(sizeof(Library));
+               l[booknum] = (Library *)malloc(sizeof(Library));
                 if(deleteBook(b[delete-1],l[booknum])){
-		    booknum++;
                     count--;
+                    booknum++;
                 }
             }         
         }
         }
     else if(menu == 5){
-      saveBook(b, index);
+      saveBook(b,l ,index,booknum);
     }else if(menu == 6){
       searchBook(b, index);
     }else if(menu == 7){
@@ -77,9 +90,9 @@ int main(void){
       showOverdue(b, index);
     }
     else if(menu == 9){
-      recommendBook(l);
+      recommendBook(l, booknum);
     }
   }
-  printf("ì¢…ë£Œë¨!\n");
+  printf("Á¾·áµÊ!\n");
   return 0;
 }
