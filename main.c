@@ -8,20 +8,20 @@ int main(void){
   Library *l[BOOKCOUNT];
   int booknum=0;
   int index=0, count=0, menu;
-  count = loadBook(b);        //ëŒ€ì—¬ë¦¬ìŠ¤íŠ¸ì˜ ë°ì´í„° ê°œìˆ˜
-  booknum = loadBookList(l);  //ë°˜ë‚©ë¦¬ìŠ¤íŠ¸ì˜ ë°ì´í„° ê°œìˆ˜
+  count = loadBook(b);        //????—¬ë¦¬ìŠ¤?Š¸?˜ ?°?´?„° ê°œìˆ˜
+  booknum = loadBookList(l);  //ë°˜ë‚©ë¦¬ìŠ¤?Š¸?˜ ?°?´?„° ê°œìˆ˜
   index = count;
   if(count!=0){
-        printf("=> ë¡œë”© ì„±ê³µ!\n");
+        printf("=> ë¡œë”© ?„±ê³?!\n");
        }else{
-         printf("=> íŒŒì¼ ì—†ìŒ\n");
+         printf("=> ?ŒŒ?¼ ?—†?Œ\n");
     }
   while(1){
     menu = selectMenu();
     if(menu == 0) break;
     if(menu == 1){
       if(count<=0){
-        printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+        printf("?°?´?„°ê°? ?—†?Šµ?‹ˆ?‹¤.\n");
       }else{
         listBook(b, index);
       }
@@ -47,11 +47,11 @@ int main(void){
     else if(menu == 3){
       int modif=0;
       if(count<=0){
-                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                printf("?°?´?„°ê°? ?—†?Šµ?‹ˆ?‹¤.\n");
             }else{
             modif = selectNum(b, index);
         if(modif==0){
-          printf("ì·¨ì†Œ ë¨!\n");
+          printf("ì·¨ì†Œ ?¨!\n");
           continue;
         }
         updateBook(b[modif-1]);
@@ -74,14 +74,14 @@ int main(void){
       int delete;
             int again;
             if(count<=0){
-                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                printf("?°?´?„°ê°? ?—†?Šµ?‹ˆ?‹¤.\n");
             }else{
             delete = selectNum(b, index);
             if(delete<=0){
-                printf("ì·¨ì†Œë¨!\n");
+                printf("ì·¨ì†Œ?¨!\n");
                 continue;
             }
-            printf("ì •ë§ë¡œ ë°˜ë‚©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ :1) ");
+            printf("? •ë§ë¡œ ë°˜ë‚©?•˜?‹œê² ìŠµ?‹ˆê¹??(?‚­? œ :1) ");
             scanf("%d",&again);
             if(again==1){
                l[booknum] = (Library *)malloc(sizeof(Library));
@@ -107,6 +107,6 @@ int main(void){
       recommendBook(l, booknum);
     }
   }
-  printf("ì¢…ë£Œë¨!\n");
+  printf("ì¢…ë£Œ?¨!\n");
   return 0;
 }
