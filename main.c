@@ -11,16 +11,16 @@ int main(void){
   booknum = loadBookList(l);
   index = count;
   if(count!=0){
-        printf("=> �ε� ����!\n");
+        printf("=> 로딩 성공!\n");
        }else{
-         printf("=> ���� ����\n");
+         printf("=> 파일 없음\n");
     }
   while(1){
     menu = selectMenu();
     if(menu == 0) break;
     if(menu == 1){
       if(count<=0){
-        printf("�����Ͱ� �����ϴ�.\n");
+        printf("데이터가 없ㅅ브니다.\n");
       }else{
         listBook(b, index);
       }
@@ -33,11 +33,11 @@ int main(void){
     else if(menu == 3){
       int modif=0;
       if(count<=0){
-                printf("�����Ͱ� �����ϴ�.\n");
+                printf("데이터가 없습니다.\n");
             }else{
             modif = selectNum(b, index);
         if(modif<0){
-          printf("��� ��!\n");
+          printf("취소 됨!\n");
           continue;
         }
         updateBook(b[modif-1]);
@@ -47,14 +47,14 @@ int main(void){
       int delete;
             int again;
             if(count<=0){
-                printf("�����Ͱ� �����ϴ�.\n");
+                printf("데이터가 없ㅅ브니다.\n");
             }else{
             delete = selectNum(b, index);
             if(delete<=0){
-                printf("��ҵ�!\n");
+                printf("취소됨!\n");
                 continue;
             }
-            printf("������ �ݳ��Ͻðڽ��ϱ�?(���� :1) ");
+            printf("정말로 반납하시겠습니까?(삭제 :1) ");
             scanf("%d",&again);
             if(again==1){
 		l[booknum] = (Library *)malloc(sizeof(Library));
@@ -80,6 +80,6 @@ int main(void){
       recommendBook(l);
     }
   }
-  printf("�����!\n");
+  printf("종료됨!\n");
   return 0;
 }
